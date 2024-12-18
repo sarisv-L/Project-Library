@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library-LS</title>
+  </head>
+  <body>
+    <h1>Project : Library</h1>
+    <table id="myTable">
+      <caption>
+        My First small library App
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Read?</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="button-container">
+      <button id="bookBtn">New Book</button>
+      <button id="addBtn">Add</button>
+      <div id="inputField" style="display: none" ;>
+        <input type="text" id="title" placeholder="Title" />
+        <input type="text" id="author" placeholder="Author" />
+        <input type="text" id="pages" placeholder="Pages" />
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
