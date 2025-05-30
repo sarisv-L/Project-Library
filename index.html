@@ -2,36 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library-LS</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Project : Library</title>
   </head>
   <body>
-    <h1>Project : Library</h1>
-    <table id="myTable">
-      <caption>
-        My First small library App
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Pages</th>
-          <th scope="col">Read?</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <div class="button-container">
-      <button id="bookBtn">New Book</button>
-      <button id="addBtn">Add</button>
-      <div id="inputField" style="display: none" ;>
-        <input type="text" id="title" placeholder="Title" />
-        <input type="text" id="author" placeholder="Author" />
-        <input type="text" id="pages" placeholder="Pages" />
-      </div>
-    </div>
-
+    <h1>Project:Library</h1>
+    <form id="book-form">
+      <input type="text" id="title" placeholder="Book Title" required />
+      <input type="text" id="author" placeholder="Author" required />
+      <input type="number" id="pages" placeholder="Number of Pages" required />
+      <label for="read">
+        <input type="checkbox" id="read" />
+        Read
+      </label>
+      <button type="submit">Add Book</button>
+    </form>
+    <div id="library-container"></div>
     <script src="script.js"></script>
   </body>
 </html>
