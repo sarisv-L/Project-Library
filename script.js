@@ -27,8 +27,6 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.readStatus = function () {};
-
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
@@ -36,6 +34,9 @@ function addBookToLibrary(title, author, pages, read) {
 
 // addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 310, true);
 // addBookToLibrary('1984', 'George Orwell', 328, false);
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
 
 function displayLibrary() {
   container.innerHTML = '';
@@ -48,14 +49,30 @@ function displayLibrary() {
     <p>${book.author}</p>
     <p>${book.pages} pages</p>
     <p>${book.read ? 'Read' : 'Not Read'}</p>
-    <button class="delete-btn" data-id=${book.id}>Remove</button>`;
+    <button class="delete-btn" data-id=${book.id}>Remove</button>
+    <button class="toggle-read-btn" data-id="${book.id}">Toggle Read</button>
+    `;
     container.appendChild(card);
-    const removeButtons = container.querySelectorAll('.delete-btn');
-    removeButtons.forEach(btn => {
-      btn.addEventListener('click', function (event) {
-        const idToRemove = this.getAttribute('data-id');
-        removeBookFromLibrary(idToRemove);
-        displayLibrary();
+  });
+
+  // Remove Buttons
+  const removeButtons = container.querySelectorAll('.delete-btn');
+  removeButtons.forEach(btn => {
+    btn.addEventListener('click', function (event) {
+      const idToRemove = this.getAttribute('data-id');
+      removeBookFromLibrary(idToRemove);
+      displayLibrary();
+    });
+    // Toggle Read Buttons
+    const toggleReadButtons = container.querySelectorAll('.toggle-read-btn');
+    toggleReadButtons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        const idToToggle = this.getAttribute('data-id');
+        const bookToToggle = myLibrary.find(book => book.id === idToToggle);
+        if (bookToToggle) {
+          bookToToggle.toggleRead();
+          displayLibrary();
+        }
       });
     });
   });
